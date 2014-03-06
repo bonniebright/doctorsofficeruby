@@ -1,25 +1,27 @@
 def calculator(sentence)
-  numbers = sentence.scan(/\d/).to_a
-  num1 = numbers[0].to_i
-  num2 = numbers[1].to_i
-  result = 0
+  math = {"plus" => :+, "minus" => :-, "multiplied" => :*, "divided" => :/, "power" => :**}
+  sentence_string = sentence.sub!(/[^a-zA-Z0-9_\s]/, "")
+  words = sentence_string.split
+  equations = []
 
-  if sentence.include? "minus"
-      result += num1 - num2
-  elsif sentence.include? "plus"
-    result += num1 + num2
-  elsif sentence.include? "multiplied"
-    result += num1 * num2
-  elsif sentence.include? "divided"
-    if num1 % num2 == 0
-      result += num1 / num2
-    else
-      result += num1.to_f / num2
+
+
+  words.each do |word|
+    if math.include? word
+      equations << math[word]
+    elsif /[0-9]/.match word 
+      equations << word.to_f 
     end
-    result
-  elsif sentence.include? "power"
-    result += num1 ** num2
-  end  
-  result
+  end
+
+  answer = eval equations.join
+  result = ""
+
+  if answer == answer.to_i
+    result = answer.to_i
+  else
+    result = answer
+  end
+  result     
 end
 

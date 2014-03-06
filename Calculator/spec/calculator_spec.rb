@@ -18,9 +18,9 @@ describe ('calculator') do
     calculator('what is 5 divided by 2?').should(eql(2.5))
   end
   it("calculates the power of one number to another") do
-    calculator('what is 4 to the 3rd power?').should(eql(64))
+    calculator('what is 4 to power 3?').should(eql(64))
   end
   it("calculates multiple equations in sentence") do
-    calculator('"What is 4 plus 6 divided by 2?').should(eql(5))
+    calculator('What is 4 plus 6 divided by 2?').should(eql(7))
   end
 end
