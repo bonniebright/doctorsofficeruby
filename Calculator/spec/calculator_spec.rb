@@ -23,4 +23,13 @@ describe ('calculator') do
   it("calculates multiple equations in sentence") do
     calculator('What is 4 plus 6 divided by 2?').should(eql(7))
   end
+  it("should calculate multiple sentences") do
+    calculator("What is 2 plus 3? What is 7 divided by 4?").should(eql([5, 1.75]))
+  end
 end
+
+# describe('sentences_calc') do
+#   it("should calculate multiple sentences") do
+#     sentences_calc("What is 2 plus 3? What is 7 divided by 4?").should(eql([5, 1.75]))
+#   end
+# end
